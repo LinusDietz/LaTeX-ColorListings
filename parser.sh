@@ -25,18 +25,20 @@ then
 	exit 0
 fi
 
-# Our outputfile. 
+# The output file. 
 escapedfile="${inputfile%????}_escaped.tex"
 
+# We use a temporary file. Will be deleted afterwards
+temp="${inputfile}.TEMP"
 
 # The color-variables. Use valid LaTeX-colors. Dont forget to use the corresponding LaTeX color packages when you compile the LaTeX-code.
 
 textcolor=black
-greencolor=nounibagreenI
-bluecolor=unibablueI
-redcolor=nounibaredI
-yellowcolor=unibayellowI
-graycolor=unibagrayI
+greencolor=green
+bluecolor=blue
+redcolor=red
+yellowcolor=yellow
+graycolor=magenta
 
 # Console outputs
 echo "LaTeX-ColorListings  Copyright (C) 2012 Linus Dietz
@@ -73,7 +75,7 @@ s|\\\|ESCAPEDBACKSLASH|g
 ### Main parser ###
 s|ESCAPEDBACKSLASH[a-zA-Z0-9]*|\\\color{$redcolor}&\\\color{$textcolor}|g
 #
-### "environemnt" commands ###
+### environment commands ###
 # begin -- end #
 s|ESCAPEDBACKSLASHbegin|\\\color{$bluecolor}\\\textbackslash\\\color{$bluecolor}begin\\\color{$textcolor}|g
 s|ESCAPEDBACKSLASHend|\\\color{$bluecolor}\\\textbackslash\\\color{$bluecolor}end\\\color{$textcolor}|g
@@ -107,11 +109,11 @@ s|& |NOESCcolor{$redcolor}NOESC& NOESCcolor{$textcolor}|g
 # Hash
 s|#|\\\#|g
 # Tilde
-s|~|\\\~|g
+s|~| ~\\\~\\\,|g
 # FIXME: how to print the tilde?~
 # backslashes
 s|NOESC|\\\|g
-" $inputfile>temp;
+" $inputfile>$temp;
 
 sed "
 s|ESCAPEDBACKSLASH|\\\color{$redcolor}\\\textbackslash |g
@@ -123,12 +125,12 @@ s|;ESCBRACKETSTOP|\\\}|g
 s|%.*|\\\color{$graycolor}\\\&\\\color{$textcolor}|
 # FIXME escape the '%'
 
-" temp>$escapedfile;
+" $temp>$escapedfile;
 
 echo "The file '$inputfile' was parsed and escaped to '$escapedfile'"
 
 #remove the temporary file
-rm temp
+rm $temp
 
 #bye!
 echo "Run completed!"
