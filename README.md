@@ -1,6 +1,6 @@
 ---
 title: LaTeX-ColorListings
-description: Parser for LaTeX Code to escaped, includable and colored LaTeX code
+description: Converts raw LaTeX Code to escaped, includable and colored LaTeX code.
 author: Linus Dietz
 tags: sed, LaTeX, parser 
 created:  2012 Dez 28
