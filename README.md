@@ -11,7 +11,7 @@ LaTeX-ColorListings
 ===================
 LaTeX-ColorListings turns LaTeX-Code into colored and escaped LaTeX-code for nice code listings. I can be used in any documentclass.
 
-![LaTeX-ColorListings Screenshot](https://github.com/lynyus/LaTeX-ColorListings/blob/master/screenshot.png)
+![LaTeX-ColorListings Screenshot](https://github.com/lynyus/LaTeX-ColorListings/blob/master/screenshot.png?raw=true)
 
 Known Issues:
 ------------------
