@@ -1,13 +1,13 @@
 #!usr/bin/bash
 
 # LaTeX-ColorListings turns LaTeX-Code into colored and escaped LaTeX-code for nice listings.
+#
 # Copyright (C) 2012 Linus Dietz 
 #
 # This program is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.
 # This program is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.
 #
-# You should have received a copy of the GNU General Public License along with this program.  If not, see <http://www.gnu.org/licenses/>.
-
+# For further information see <http://www.gnu.org/licenses/>.
 
 # Inputfile (scans the first argument)
 inputfile=$1
@@ -109,9 +109,8 @@ s|& |NOESCcolor{$redcolor}NOESC& NOESCcolor{$textcolor}|g
 # Hash
 s|#|\\\#|g
 # Tilde
-s|~| ~\\\~\\\,|g
-# FIXME: how to print the tilde?~
-# backslashes
+s|~|~\\\~\\\,|g
+# backslashes back
 s|NOESC|\\\|g
 " $inputfile>$temp;
 
